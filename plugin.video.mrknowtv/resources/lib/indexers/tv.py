@@ -395,6 +395,9 @@ class tv:
             result = videostar.get('/channels/list/ios-plus')
             result = json.loads(result)
             control.log('A tv.get %s' % result)
+            if result['status'] == 'error':
+                control.infoDialog(result['errors'][0]['msg'])
+                raise Exception(result['errors'][0]['msg'])
             for i in result['channels']:
                 control.log('Result %s' % i)
                 if i['access_status']== 'subscribed' or i['access_status']== 'free':
