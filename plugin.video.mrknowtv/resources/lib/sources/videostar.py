@@ -57,6 +57,7 @@ def get(url, proxy='', retry=True):
         r = json.loads(result)
 
         if (r['status'] =="error" or result==None) and retry:
+           login()
            result = get(url, proxy, False);
 
         return result
