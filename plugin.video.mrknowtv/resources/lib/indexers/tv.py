@@ -53,7 +53,7 @@ class tv:
         self.datetime = (datetime.datetime.utcnow() - datetime.timedelta(hours = 5))
         self.systime = (self.datetime).strftime('%Y%m%d%H%M%S%f')
         self.telewizjadanet_link = 'http://www.telewizjada.net'
-        self.videostar_link = 'https://api.videostar.pl'
+        self.videostar_link = 'https://api-pilot.wp.pl'
         self.yoy_link = 'http://yoy.tv'
         self.weeb_link = 'http://weeb.tv'
         self.wizja_link = 'http://wizja.tv'

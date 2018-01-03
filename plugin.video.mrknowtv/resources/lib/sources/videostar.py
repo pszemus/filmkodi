@@ -38,7 +38,7 @@ def get(url, proxy=''):
                 control.openSettings('1.11')
             raise Exception('Empty credentials')
 
-        url = urlparse.urljoin('https://api.videostar.pl', url)
+        url = urlparse.urljoin('https://api-pilot.wp.pl', url)
         if proxy == '':
             result = client.request(url, headers=headers, cookie=control.get_setting('videostar.sess'))
         else:
@@ -75,13 +75,13 @@ def login():
     params['login'] = control.get_setting('videostar.user')
     params['password'] = control.get_setting('videostar.pass')
     params['permanent']=1
-    url = 'https://api.videostar.pl/user/login'
+    url = 'https://api-pilot.wp.pl/user/login'
     result = client.request(url, post=params, headers=headers, output='cookie')
     control.log('ResultC videostar.get %s' % result)
 
     control.set_setting('videostar.sess', result)
     control.sleep(500)
-    url='https://api.videostar.pl/invitations/limit'
+    url='https://api-pilot.wp.pl/invitations/limit'
     headers['cookie']=result
     result2 = client.request(url, headers=headers)
     if 'error' in  result2:
@@ -109,7 +109,7 @@ def getstream(id):
         pl_proxy_port = control.setting('pl_proxy_port')
 
 
-        url = 'https://api.videostar.pl/channels/get/%s?format_id=2' % id
+        url = 'https://api-pilot.wp.pl/channels/get/%s?format_id=2' % id
         result = get(url,pl_proxy)
         control.log('Z %s' % result)
         result = json.loads(result)
